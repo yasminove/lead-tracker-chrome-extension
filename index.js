@@ -7,15 +7,8 @@ const tabBtn = document.getElementById('tab-btn');
 let leads = JSON.parse(localStorage.getItem('myLeads')) || [];
 renderLeads()
 
-const tabs = [
-    {url: "https://www.linkedin.com/in/per-harald-borgen/"}
-]
-
 tabBtn.addEventListener('click', function () {
-    console.log('save btn logged');
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-        console.log('chrome.tabs.query result:', tabs);
-        console.log(tabs, 'tabs index.js');
         if (tabs.length > 0) {
             leads.push(tabs[0].url);
             localStorage.setItem('myLeads', JSON.stringify(leads));
